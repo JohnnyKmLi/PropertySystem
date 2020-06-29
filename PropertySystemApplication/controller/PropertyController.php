@@ -7,7 +7,8 @@ class PropertyController
         $conn = $this->connectToDatabase();
         $property = new PropertyModel($conn);
 
-        $localDatabase = ($property->read())->fetchAll();
+        // $localDatabase = ($property->read())->fetchAll();
+        $localDatabase = $property->read();
 
         return json_encode($localDatabase);
     }

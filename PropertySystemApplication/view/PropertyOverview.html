@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="propertyStyles.css" />
+    <title>Property Overview</title>
+  </head>
+  <body>
+    <div id="propertiesDiv">
+      <h1>Properties</h1>
+
+      <input v-model="test" />
+
+      <button onclick="alert( 'test' )" :disabled="test.length < 2">
+        alert
+      </button>
+
+      <button v-on:click="refreshProperties">Refresh Properties</button>
+      <button v-on:click="showProperties">Show Properties</button>
+      <div id="propertyDiv" v-for="property in properties">
+        <p>{{ property.uuid }}</p>
+        <p>{{ property.type }}</p>
+        <p>{{ property.property_type }}</p>
+        <p>{{ property.address }}</p>
+        <p>{{ property.county }}</p>
+        <p>{{ property.country }}</p>
+        <p>{{ property.num_bedrooms }}</p>
+        <p>{{ property.num_bathrooms }}</p>
+        <p>{{ property.price }}</p>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="propertyOverview.js"></script>
+  </body>
+</html>

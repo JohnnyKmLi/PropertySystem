@@ -10,16 +10,18 @@ class PropertyModel
 
     public function read()
     {
-        $query = 'SELECT *
-                      FROM properties
-                      INNER JOIN property_types
-                      ON properties.property_type_id = property_types.id
-                      ORDER BY properties.updated_at DESC';
+        $query = 'SELECT p.uuid, p.county, p.country, p.town, p.description, p.address, p.image_full, p.num_bedrooms, p.num_bathrooms, p.price, p.type, pt.title AS property_type, pt.description AS property_type_description
+                      FROM properties p
+                      INNER JOIN property_types pt
+                      ON p.property_type_id = pt.id
+                      ORDER BY p.updated_at DESC';
 
         $statement = $this->conn->prepare($query);
         $statement->execute();
 
-        return $statement;
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
     }
 
     public function update($property)
