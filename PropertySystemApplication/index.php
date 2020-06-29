@@ -2,6 +2,8 @@
 
 include_once "routes.php";
 
+header( 'Location: http://localhost/view/PropertyOverview.html' ) ;
+
 function __autoload($classname) {
     if(file_exists('./controller/'.$classname.'.php')) {
         require_once './controller/'.$classname.'.php';
