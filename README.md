@@ -23,7 +23,7 @@ This project was developed by using localhost server XAMPP.
 3. Clone the repo and move all the files into the `htdocs` directory.
 
 # Using the webiste
-1. Start up your broswer and enter the url `http://localhost/view/PropertyOverview.html`.
+1. Start up your broswer and enter the url `http://localhost`.
 2. This should take you to a simple webpage with the title `Properties`, buttons `Refresh Properties` and `Show Properties`.
 3. Click on `Refresh Properties` this will insert or update any properties missing from the database from the property system API.
 4. Click on `Show Properties` this will display the property details in the database (currently just a container of information).
