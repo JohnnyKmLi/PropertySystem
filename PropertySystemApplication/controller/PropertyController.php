@@ -7,10 +7,16 @@ class PropertyController
         $conn = $this->connectToDatabase();
         $property = new PropertyModel($conn);
 
-        // $localDatabase = ($property->read())->fetchAll();
         $localDatabase = $property->read();
 
         return json_encode($localDatabase);
+    }
+
+    public function removeProperty($uuid){
+        $conn = $this->connectToDatabase();
+        $property = new PropertyModel($conn);
+
+        return $property->delete($uuid);
     }
 
     public function syncLocalDatabaseWithRemoteAPI()
@@ -18,7 +24,7 @@ class PropertyController
         $conn = $this->connectToDatabase();
         $property = new PropertyModel($conn);
 
-        $localDatabase = ($property->read())->fetchAll();
+        $localDatabase = $property->read();
         $remoteDatabase = json_decode($this->fetchPropertiesFromAPI(1), true);
 
         $this->insertOrUpdateLocalDatabaseWhenRemoteDatabaseChanged($property, $localDatabase, $remoteDatabase);
